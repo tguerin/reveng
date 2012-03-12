@@ -25,8 +25,7 @@
 	<table catalog="PUBLIC" schema="PUBLIC" name="T_STORE">
 		<meta attribute="extra-import">fr.xebia.reveng.model.common.IPojoWithCode</meta>
 		<meta attribute="implements">IPojoWithCode</meta>
-		<!-- Exemple renommage propriété -->
-		<column name="NAME" property="libelle" />
+		<column name="XYZ" property="nbRayons" />
 	</table>
 
 	<!-- Table : T_PRODUCT -->
