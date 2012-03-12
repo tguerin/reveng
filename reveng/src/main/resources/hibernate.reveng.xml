@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<!-- Mapping database type to java type -->
+	<type-mapping>
+		<sql-type jdbc-type="VARCHAR" length="1" hibernate-type="char"
+			not-null="true" />
+		<sql-type jdbc-type="VARCHAR" length="1" not-null="true"
+			hibernate-type="java.lang.Character" />
+	</type-mapping>
+
+	<!-- We want all Store tables in a specific package -->
+	<table-filter match-catalog="PUBLIC" match-schema="PUBLIC"
+		match-name="T_STORE.*" package="fr.xebia.reveng.model.store" />
+
+	<!-- We want other tables in default package -->
+	<table-filter match-catalog="PUBLIC" match-schema="PUBLIC"
+		match-name=".*" />
+
+
+
+	<!-- Table : T_STORE -->
+	<table catalog="PUBLIC" schema="PUBLIC" name="T_STORE">
+		<meta attribute="extra-import">fr.xebia.reveng.model.common.IPojoWithCode</meta>
+		<meta attribute="implements">IPojoWithCode</meta>
+		<!-- Exemple renommage propriété -->
+		<column name="NAME" property="libelle" />
+	</table>
+
+	<!-- Table : T_PRODUCT -->
+	<table catalog="PUBLIC" schema="PUBLIC" name="T_PRODUCT">
+		<meta attribute="extra-import">fr.xebia.reveng.model.common.IPojoWithCode</meta>
+		<meta attribute="implements">IPojoWithCode</meta>
+	</table>
+
+	<!-- Table : T_STORE_HAS_PRODUCT -->
+	<table catalog="PUBLIC" schema="PUBLIC" name="T_STORE_HAS_PRODUCT">
+		<foreign-key constraint-name="T_STORE_HAS_PRODUCT_PRODUCT_ID">
+			<set cascade="PERSIST,REFRESH" />
+		</foreign-key>
+	</table>
+</hibernate-reverse-engineering>
